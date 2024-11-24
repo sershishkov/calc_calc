@@ -53,6 +53,7 @@ export default function RootLayout({
                 maxWidth={1024}
                 pr={`2rem`}
                 pl={`2rem`}
+                pt={`4rem`}
               >
                 <Navbar />
                 {children}

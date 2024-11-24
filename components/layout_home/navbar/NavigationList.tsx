@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 
 import List from '@mui/material/List';
@@ -21,6 +21,8 @@ import PersonPinIcon from '@mui/icons-material/PersonPin';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
+import classes from './styles.module.scss';
+
 import {
   links_level_1,
   links_level_2,
@@ -40,6 +42,7 @@ export default function NavigationList({
 }) {
   const router = useRouter();
   const session = useSession();
+  const pathname = usePathname();
   const user = session.data?.user;
   const [openAuth, setOpenAuth] = useState<boolean>(false);
 
@@ -149,6 +152,9 @@ export default function NavigationList({
       {/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */}
       <ListItemButton
         onClick={() => set__open__links_level_1(!open__links_level_1)}
+        className={
+          pathname.includes('level_1') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -161,7 +167,10 @@ export default function NavigationList({
           {links_level_1.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -177,6 +186,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_2(!open__links_level_2)}
+        className={
+          pathname.includes('level_2') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -189,7 +201,10 @@ export default function NavigationList({
           {links_level_2.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -205,6 +220,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_3(!open__links_level_3)}
+        className={
+          pathname.includes('level_3') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -217,7 +235,10 @@ export default function NavigationList({
           {links_level_3.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -233,6 +254,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_4(!open__links_level_4)}
+        className={
+          pathname.includes('level_4') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -245,7 +269,10 @@ export default function NavigationList({
           {links_level_4.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -261,6 +288,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_5(!open__links_level_5)}
+        className={
+          pathname.includes('level_5') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -273,7 +303,10 @@ export default function NavigationList({
           {links_level_5.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -289,6 +322,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_6(!open__links_level_6)}
+        className={
+          pathname.includes('level_6') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -301,7 +337,10 @@ export default function NavigationList({
           {links_level_6.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -317,6 +356,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_7(!open__links_level_7)}
+        className={
+          pathname.includes('level_7') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -329,7 +371,10 @@ export default function NavigationList({
           {links_level_7.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}
@@ -345,6 +390,9 @@ export default function NavigationList({
 
       <ListItemButton
         onClick={() => set__open__links_level_8(!open__links_level_8)}
+        className={
+          pathname.includes('level_8') ? classes.list_header : undefined
+        }
       >
         <ListItemIcon>
           <InboxIcon />
@@ -357,7 +405,10 @@ export default function NavigationList({
           {links_level_8.map((item) => (
             <ListItemButton
               key={item.link}
-              sx={{ pl: 4 }}
+              sx={{
+                pl: 4,
+              }}
+              className={pathname === item.link ? classes.list_item : undefined}
               component={Link}
               href={item.link}
               onClick={() => toggleDrawer(false)}

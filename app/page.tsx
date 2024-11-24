@@ -16,7 +16,7 @@ export default function Home() {
       margin={`auto`}
       pr={`2rem`}
       pl={`2rem`}
-      pt={`4rem`}
+      // pt={`4rem`}
     >
       <Description1 />
       <Description2 />
