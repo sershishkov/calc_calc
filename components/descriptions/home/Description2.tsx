@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid2';
 
-import DescrBody from '@/components/ui/descriptions/DescrBody';
-import DescAccordion from '@/components/ui/descriptions/DescAccordion';
+import DescrBody from '@/components/ui/description/DescrBody';
+import DescAccordion from '@/components/ui/description/DescAccordion';
 
 function Description() {
   return (

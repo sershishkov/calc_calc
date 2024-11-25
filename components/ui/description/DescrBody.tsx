@@ -2,7 +2,7 @@ import React from 'react';
 
 import Typography from '@mui/material/Typography';
 
-function DescrBody({ children }: { children: React.ReactNode }) {
+function DescrBody({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <Typography
       variant='body1'

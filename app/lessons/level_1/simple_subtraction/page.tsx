@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function SimpleSubstraction() {
+export default function SimpleSubstractionPage() {
   return <div>page</div>;
 }

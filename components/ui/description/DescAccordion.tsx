@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 
 import Accordion from '@mui/material/Accordion';
@@ -7,15 +6,15 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import DescrTitle from '@/components/ui/descriptions/DescrTitle';
+import DescrTitle from './DescrTitle';
 
 function DescAccordion({
   children,
   title,
-}: {
+}: Readonly<{
   children: React.ReactNode;
   title: string;
-}) {
+}>) {
   const [expanded, setExpanded] = useState<string | false>(false);
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {

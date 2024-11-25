@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function SimpleDivision() {
+export default function SimpleDivisionPage() {
   return <div>page</div>;
 }
