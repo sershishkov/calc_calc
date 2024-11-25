@@ -43,7 +43,13 @@ function Settings({
   }, [displaySettings]);
 
   return (
-    <Grid sx={{ display: displaySettings ? 'block' : 'none' }}>
+    <Grid
+      sx={{
+        display: displaySettings ? 'block' : 'none',
+        // border: '1px solid blue',
+        // width: '100%',
+      }}
+    >
       <Typography variant='h6' align='center'>
         Настройки
       </Typography>
@@ -52,8 +58,24 @@ function Settings({
         justifyContent='center'
         alignItems='center'
         direction='column'
+        sx={
+          {
+            // border: '1px solid yellow',
+            // width: '100%',
+          }
+        }
       >
-        <Grid>
+        <Grid
+          display={`flex`}
+          justifyContent='center'
+          alignItems='center'
+          sx={
+            {
+              // border: '1px solid pink',
+              // width: '100%',
+            }
+          }
+        >
           <InputSettings
             id='examples_number'
             name='examples_number'

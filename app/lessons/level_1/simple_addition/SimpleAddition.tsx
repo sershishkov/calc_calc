@@ -88,7 +88,10 @@ export default function SimpleAddition() {
     <Grid
       container
       direction='column'
-      sx={{ border: '1px solid red', width: '100%' }}
+      sx={{
+        // border: '1px solid red',
+        width: '100%',
+      }}
     >
       <Header
         hrefPrev='/'
