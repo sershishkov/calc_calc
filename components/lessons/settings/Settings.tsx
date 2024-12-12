@@ -6,6 +6,9 @@ import InputSettings from '@/components/ui/inputs/InputSettings';
 import ShowHintSwitch from '@/components/ui/check/ShowHintSwitch';
 import ButtonGo from '@/components/ui/buttons/ButtonGo';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 function Settings({
   displaySettings,
   onChangeExamplesNumber,
@@ -35,6 +38,8 @@ function Settings({
   showHints: boolean;
   onChangeShowHints: React.ChangeEventHandler<HTMLInputElement>;
 }>) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   useEffect(() => {
     if (displaySettings) {
       const examples_numberInput = document.getElementById('examples_number');
@@ -44,13 +49,16 @@ function Settings({
 
   return (
     <Grid
+      // container
+      justifyContent='center'
+      direction='column'
       sx={{
         display: displaySettings ? 'block' : 'none',
-        // border: '1px solid blue',
-        // width: '100%',
+        marginTop: '1rem',
+        // border: '1px solid yellow',
       }}
     >
-      <Typography variant='h6' align='center'>
+      <Typography variant={matches ? 'h3' : 'h6'} align='center'>
         Настройки
       </Typography>
       <Grid
@@ -60,8 +68,7 @@ function Settings({
         direction='column'
         sx={
           {
-            // border: '1px solid yellow',
-            // width: '100%',
+            // border: '1px solid blue',
           }
         }
       >

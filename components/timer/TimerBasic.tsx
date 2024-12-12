@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 
-function TimerBasic({ time }: { time: number }) {
+function TimerBasic({ time }: Readonly<{ time: number }>) {
   return (
     <Grid container alignItems='center' justifyContent='flex-end'>
       <Grid>

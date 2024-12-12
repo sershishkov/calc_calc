@@ -19,6 +19,7 @@ function InputSettings({
     <TextField
       id={id}
       name={name}
+      fullWidth
       type='number'
       margin='normal'
       label={label}
@@ -26,6 +27,7 @@ function InputSettings({
       onChange={onChange}
       value={value}
       onKeyDown={onKeyPress}
+      // sx={{ border: '1px solid red' }}
     />
   );
 }

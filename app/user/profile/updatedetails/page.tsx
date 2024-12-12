@@ -19,9 +19,15 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 const UserEditDetails = () => {
   const session = useSession();
   const user = session?.data?.user;
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const [formData, setFormData] = useState({
     name: '',
@@ -83,14 +89,22 @@ const UserEditDetails = () => {
   };
 
   return (
-    <Grid container direction='column'>
+    <Grid
+      container
+      direction='column'
+      sx={{
+        // border: '1px solid red',
+        width: '100%',
+        padding: '0 .5rem',
+      }}
+    >
       <Grid size={12} sx={{ mb: 5 }}>
-        <Typography variant='h3' align='center'>
+        <Typography variant={matches ? 'h3' : 'h6'} align='center'>
           Моя страница
         </Typography>
       </Grid>
       <Grid size={12}>
-        <Typography variant='h3' align='center'>
+        <Typography variant={matches ? 'h3' : 'h6'} align='center'>
           Изменить почту или имя
         </Typography>
       </Grid>
@@ -122,7 +136,7 @@ const UserEditDetails = () => {
       </Grid>
 
       <Grid size={12} sx={{ mt: 5 }}>
-        <Typography variant='h3' align='center'>
+        <Typography variant={matches ? 'h3' : 'h6'} align='center'>
           Изменить пароль
         </Typography>
       </Grid>

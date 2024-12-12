@@ -14,9 +14,10 @@ export default function Home() {
       justifyContent='flex-start'
       alignItems='center'
       margin={`auto`}
-      pr={`2rem`}
-      pl={`2rem`}
+      pr={`0.5rem`}
+      pl={`0.5rem`}
       // pt={`4rem`}
+      // sx={{ border: '1px solid red' }}
     >
       <Description1 />
       <Description2 />

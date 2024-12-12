@@ -51,9 +51,8 @@ export default function RootLayout({
                 margin={`auto`}
                 minWidth={320}
                 maxWidth={1024}
-                pr={`2rem`}
-                pl={`2rem`}
                 pt={`4rem`}
+                // sx={{ border: '1px solid white' }}
               >
                 <Navbar />
                 {children}
