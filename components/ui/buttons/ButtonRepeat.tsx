@@ -17,7 +17,7 @@ function ButtonRepeat({
       id={id}
     >
       <LoopIcon />
-      try again
+      давай еще!
     </Button>
   );
 }

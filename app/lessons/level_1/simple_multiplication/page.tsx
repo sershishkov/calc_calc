@@ -1,5 +1,11 @@
-import React from 'react';
+import type { Metadata } from 'next';
+import SimpleMultiplication from './SimpleMultiplication';
 
-export default function SimpleMultiplicationPage() {
-  return <div>page</div>;
+export const metadata: Metadata = {
+  title: 'Простое умножение',
+  description: 'Простое умножение чисел',
+};
+
+export default function SimpleAdditionPage() {
+  return <SimpleMultiplication />;
 }

@@ -16,7 +16,7 @@ function ButtonStop({
       sx={{ margin: 'auto' }}
     >
       <CloseIcon />
-      stop
+      стоп
     </Button>
   );
 }
