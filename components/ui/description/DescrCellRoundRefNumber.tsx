@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 
-function DescrCellRoundRefNumber({ text }: { text: string }) {
+function DescrCellRoundRefNumber({ text }: Readonly<{ text: string }>) {
   return (
     <Typography
       variant='h3'

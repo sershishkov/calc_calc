@@ -17,3 +17,20 @@ export interface StatisticExerciseInterface {
   minTaskTime: number;
   tasksCount?: number;
 }
+
+export interface DescribeExampleTableMultInterface {
+  hintPlusLeft: string;
+  hintPlusRight: string;
+  refNumber: string;
+  numberLeft: string;
+  numberRight: string;
+  valueIntermediate: string;
+  hintMinusLeft: string;
+  hintMinusRight: string;
+  valueToAdd: string;
+  valueToMinus: string;
+  valueResult: string;
+  displayRowPlusHits: boolean;
+  displayRowMinusHints: boolean;
+  displayRowResults: boolean;
+}

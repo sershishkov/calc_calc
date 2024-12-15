@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 function DescAccent({
   align = 'center',
   children,
-}: {
+}: Readonly<{
   align?: string;
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <Typography
       variant='h5'

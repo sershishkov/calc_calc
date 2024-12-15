@@ -6,19 +6,18 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
-import { operators } from '../../../utils/constants';
-import ButtonStop from '../../ui/buttons/ButtonStop';
-import ButtonOk from '../../ui/buttons/ButtonOk';
+import ButtonStop from '@/components/ui/buttons/ButtonStop';
+import ButtonOk from '@/components/ui/buttons/ButtonOk';
 
-import DescrCellMain from '../../ui/description/DescrCellMain';
-import ExerciseHeader from '../../ui/description/ExerciseHeader';
-import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNumber';
-import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';
-import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
+import DescrCellMain from '@/components/ui/description/DescrCellMain';
+import ExerciseHeader from '@/components/ui/description/ExerciseHeader';
+import DescrCellRoundHintNumber from '@/components/ui/description/DescrCellRoundHintNumber';
+import DescrCellRoundRefNumber from '@/components/ui/description/DescrCellRoundRefNumber';
+import InputUserAnswerSimple from '@/components/ui/inputs/InputUserAnswerSimple';
 
-import { generateExample__AddMultSub } from '../../../utils/generateExample';
+import { GenerateExampleAddMultSub } from '@/utils/generateExample';
 
 function ExercieMultWithHints({
   displayExample,
@@ -33,10 +32,10 @@ function ExercieMultWithHints({
   showPlusHints,
   showMinusHints,
   refNumber,
-}: {
+}: Readonly<{
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: generateExample__AddMultSub;
+  example: GenerateExampleAddMultSub;
   operator: string;
   userAnswer: string;
   onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
@@ -46,7 +45,7 @@ function ExercieMultWithHints({
   showPlusHints: boolean;
   showMinusHints: boolean;
   refNumber: number;
-}) {
+}>) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
@@ -55,8 +54,8 @@ function ExercieMultWithHints({
   }, [displayExample]);
 
   return (
-    <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-      <Grid item sx={{ flex: 1, padding: '10px' }}>
+    <Grid container sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
       <ExerciseHeader align='center'>
@@ -142,7 +141,7 @@ function ExercieMultWithHints({
                     }
                   }
                 >
-                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
+                  <DescrCellMain align='center'>=</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <InputUserAnswerSimple
