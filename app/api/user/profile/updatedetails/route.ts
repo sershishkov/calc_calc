@@ -11,6 +11,7 @@ export const PUT = async (request: NextRequest) => {
   try {
     await connectToDB();
     const session = await getServerSession(authOptions);
+
     const user = await Model__User.findById(session?.user._id);
 
     if (user) {

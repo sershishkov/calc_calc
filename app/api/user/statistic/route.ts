@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import Model__Statistic from '@/lib/mongoose/models/Model__Statistic';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 import { StatisticExerciseInterface } from '@/interfaces/refdata';
 
-import Model__Statistic from '@/lib/mongoose/models/Model__Statistic';
 import { connectToDB } from '@/lib/mongoose/connectToDB';
 
 export const POST = async (request: NextRequest) => {
@@ -93,15 +93,16 @@ export const GET = async (request: NextRequest) => {
   try {
     await connectToDB();
     const session = await getServerSession(authOptions);
+
     if (!session) {
       return new NextResponse(
         JSON.stringify({
-          message: 'You are not authorized',
+          message: 'You are not authorized ',
         }),
         { status: 400 }
       );
     }
-    const userID = session?.user._id;
+    const userID = session?.user?._id;
     if (!userID) {
       return new NextResponse(
         JSON.stringify({
@@ -128,10 +129,24 @@ export const GET = async (request: NextRequest) => {
         }
       );
     }
+    let totalTasksOk = 0;
+    let totalTasksError = 0;
+    let totalExerciseTime = 0;
+    let totalTasksCount = 0;
+    all__ITEMS.forEach((item) => {
+      totalTasksOk += item.tasksOk;
+      totalTasksError += item.tasksError;
+      totalExerciseTime += item.exerciseTime;
+      totalTasksCount += item.tasksCount;
+    });
     const responseObj = {
       message: 'Найдено успешно',
       my_data: {
         items: all__ITEMS,
+        totalTasksOk,
+        totalTasksError,
+        totalExerciseTime,
+        totalTasksCount,
       },
     };
     return new NextResponse(JSON.stringify(responseObj), { status: 200 });

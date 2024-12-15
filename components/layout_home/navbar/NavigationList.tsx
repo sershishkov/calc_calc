@@ -14,7 +14,7 @@ import SendIcon from '@mui/icons-material/Send';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
-// import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 
@@ -51,22 +51,14 @@ export default function NavigationList({
     router.push('/');
   };
 
-  const [open__links_level_1, set__open__links_level_1] =
-    useState<boolean>(false);
-  const [open__links_level_2, set__open__links_level_2] =
-    useState<boolean>(false);
-  const [open__links_level_3, set__open__links_level_3] =
-    useState<boolean>(false);
-  const [open__links_level_4, set__open__links_level_4] =
-    useState<boolean>(false);
-  const [open__links_level_5, set__open__links_level_5] =
-    useState<boolean>(false);
-  const [open__links_level_6, set__open__links_level_6] =
-    useState<boolean>(false);
-  const [open__links_level_7, set__open__links_level_7] =
-    useState<boolean>(false);
-  const [open__links_level_8, set__open__links_level_8] =
-    useState<boolean>(false);
+  const [openLinksLevel_1, setOpenLinksLevel_1] = useState<boolean>(false);
+  const [openLinksLevel_2, setOpenLinksLevel_2] = useState<boolean>(false);
+  const [openLinksLevel_3, setOpenLinksLevel_3] = useState<boolean>(false);
+  const [openLinksLevel_4, setOpenLinksLevel_4] = useState<boolean>(false);
+  const [openLinksLevel_5, setOpenLinksLevel_5] = useState<boolean>(false);
+  const [openLinksLevel_6, setOpenLinksLevel_6] = useState<boolean>(false);
+  const [openLinksLevel_7, setOpenLinksLevel_7] = useState<boolean>(false);
+  const [openLinksLevel_8, setOpenLinksLevel_8] = useState<boolean>(false);
   return (
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -85,17 +77,17 @@ export default function NavigationList({
         <List disablePadding>
           {user ? (
             <>
-              {/* <ListItemButton
-                // sx={{ pl: 4 }}
+              <ListItemButton
+                sx={{ pl: 4 }}
                 component={Link}
-                href='/user'
+                href='/user/statistic'
                 onClick={() => toggleDrawer(false)}
               >
                 <ListItemIcon>
                   <QuestionMarkIcon />
                 </ListItemIcon>
-                <ListItemText primary='Информация' />
-              </ListItemButton> */}
+                <ListItemText primary='Статистика' />
+              </ListItemButton>
               <ListItemButton
                 sx={{ pl: 4 }}
                 onClick={() => {
@@ -151,7 +143,7 @@ export default function NavigationList({
       </Collapse>
       {/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */}
       <ListItemButton
-        onClick={() => set__open__links_level_1(!open__links_level_1)}
+        onClick={() => setOpenLinksLevel_1(!openLinksLevel_1)}
         className={
           pathname.includes('level_1') ? classes.list_header : undefined
         }
@@ -160,9 +152,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 1' />
-        {open__links_level_1 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_1 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_1} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_1} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_1.map((item) => (
             <ListItemButton
@@ -185,7 +177,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_2(!open__links_level_2)}
+        onClick={() => setOpenLinksLevel_2(!openLinksLevel_2)}
         className={
           pathname.includes('level_2') ? classes.list_header : undefined
         }
@@ -194,9 +186,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 2' />
-        {open__links_level_2 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_2 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_2} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_2} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_2.map((item) => (
             <ListItemButton
@@ -219,7 +211,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_3(!open__links_level_3)}
+        onClick={() => setOpenLinksLevel_3(!openLinksLevel_3)}
         className={
           pathname.includes('level_3') ? classes.list_header : undefined
         }
@@ -228,9 +220,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 3' />
-        {open__links_level_3 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_3 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_3} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_3} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_3.map((item) => (
             <ListItemButton
@@ -253,7 +245,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_4(!open__links_level_4)}
+        onClick={() => setOpenLinksLevel_4(!openLinksLevel_4)}
         className={
           pathname.includes('level_4') ? classes.list_header : undefined
         }
@@ -262,9 +254,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 4' />
-        {open__links_level_4 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_4 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_4} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_4} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_4.map((item) => (
             <ListItemButton
@@ -287,7 +279,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_5(!open__links_level_5)}
+        onClick={() => setOpenLinksLevel_5(!openLinksLevel_5)}
         className={
           pathname.includes('level_5') ? classes.list_header : undefined
         }
@@ -296,9 +288,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 5' />
-        {open__links_level_5 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_5 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_5} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_5} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_5.map((item) => (
             <ListItemButton
@@ -321,7 +313,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_6(!open__links_level_6)}
+        onClick={() => setOpenLinksLevel_6(!openLinksLevel_6)}
         className={
           pathname.includes('level_6') ? classes.list_header : undefined
         }
@@ -330,9 +322,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 6' />
-        {open__links_level_6 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_6 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_6} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_6} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_6.map((item) => (
             <ListItemButton
@@ -355,7 +347,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_7(!open__links_level_7)}
+        onClick={() => setOpenLinksLevel_7(!openLinksLevel_7)}
         className={
           pathname.includes('level_7') ? classes.list_header : undefined
         }
@@ -364,9 +356,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 7' />
-        {open__links_level_7 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_7 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_7} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_7} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_7.map((item) => (
             <ListItemButton
@@ -389,7 +381,7 @@ export default function NavigationList({
       </Collapse>
 
       <ListItemButton
-        onClick={() => set__open__links_level_8(!open__links_level_8)}
+        onClick={() => setOpenLinksLevel_8(!openLinksLevel_8)}
         className={
           pathname.includes('level_8') ? classes.list_header : undefined
         }
@@ -398,9 +390,9 @@ export default function NavigationList({
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary='Уровень 8' />
-        {open__links_level_8 ? <ExpandLess /> : <ExpandMore />}
+        {openLinksLevel_8 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open__links_level_8} timeout='auto' unmountOnExit>
+      <Collapse in={openLinksLevel_8} timeout='auto' unmountOnExit>
         <List disablePadding>
           {links_level_8.map((item) => (
             <ListItemButton
