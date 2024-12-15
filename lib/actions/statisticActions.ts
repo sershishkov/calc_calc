@@ -1,5 +1,4 @@
-// import { toast } from 'react-toastify';
-// 'use server';
+'use server';
 import { headers } from 'next/headers';
 
 const errorToMessage = (newError: any) => {
@@ -10,12 +9,16 @@ const errorToMessage = (newError: any) => {
   return message;
 };
 
-export const itemAddOrUpdate = async (dataObject: any) => {
+export const addOrUpdateStatistic = async (dataObject: any) => {
+  const headersList = await headers();
+
+  const cookie = headersList.get('cookie');
   try {
     const res = await fetch(`http://localhost:3000/api/user/statistic`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
+        Cookie: cookie ?? '',
       },
       body: JSON.stringify(dataObject),
       cache: 'no-store',
@@ -25,12 +28,9 @@ export const itemAddOrUpdate = async (dataObject: any) => {
     if (!res.ok || !myData.my_data) {
       throw new Error(myData.message);
     }
-
-    // toast.success(`${myData.message}`);
   } catch (error: any) {
     const message = errorToMessage(error);
     console.log(message);
-    // toast.error(`${message}`);
   }
 };
 
@@ -48,7 +48,7 @@ export const getMyStatistic = async () => {
     });
 
     const myData = await res.json();
-    // console.log(myData);
+
     if (!res.ok || !myData.my_data) {
       throw new Error(myData.message);
     }
@@ -57,6 +57,5 @@ export const getMyStatistic = async () => {
   } catch (error: any) {
     const message = errorToMessage(error);
     console.log(message);
-    // toast.error(`${message}`);
   }
 };

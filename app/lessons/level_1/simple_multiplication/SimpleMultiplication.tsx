@@ -11,15 +11,18 @@ import ExerciseSimple from '@/components/lessons/exercises/ExerciseSimple';
 import ReportOnlyResult from '@/components/lessons/reports/ReportOnlyResult';
 
 import { ExampleSimpleInterface } from '@/interfaces/interfaces';
+import { addOrUpdateStatistic } from '@/lib/actions/statisticActions';
 
 import Grid from '@mui/material/Grid2';
 
 export default function SimpleMultiplication() {
+  const exerciseName = 'Простое умножение чисел';
   const [min, setMin] = React.useState('1');
   const [max, setMax] = useState('10');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] = useState<GenerateExampleAddMultSub>();
   const [userAnswer, setUserAnswer] = useState('');
+  const [tasksOk, setTasksOk] = useState(0);
   const [displayExample, setDisplayExample] = useState(false);
   const [displaySettings, setDisplaySettings] = useState(true);
   const [displayStatistics, setDisplayStatistics] = useState(false);
@@ -63,7 +66,7 @@ export default function SimpleMultiplication() {
     setUserAnswer('');
   };
 
-  const onAnswer = () => {
+  const onAnswer = async () => {
     const obj = {
       id: uuidv4(),
       example: `${example!.numberLeft} * ${example!.numberRight}`,
@@ -71,6 +74,9 @@ export default function SimpleMultiplication() {
       rightAnswer: example!.resultMult,
       done: +userAnswer === +example!.resultMult,
     };
+    if (+userAnswer === +example!.resultMult) {
+      setTasksOk((prevState) => prevState + 1);
+    }
     setResultsList((prevState) => [...prevState, obj]);
 
     setUserAnswer('');
@@ -78,6 +84,12 @@ export default function SimpleMultiplication() {
     if (Number(numberOf_Task) < Number(examplesNumber)) {
       nextTask();
     } else {
+      await addOrUpdateStatistic({
+        exerciseName,
+        tasksOk,
+        tasksError: Number(examplesNumber) - tasksOk,
+        exerciseTime: time,
+      });
       setDisplayExample(false);
       setDisplayStatistics(true);
       pause();
@@ -97,7 +109,7 @@ export default function SimpleMultiplication() {
         hrefPrev='/lessons/level_1/simple_subtraction'
         hrefNext='/lessons/level_1/simple_division'
         time={time}
-        title='Простое умножение чисел'
+        title={exerciseName}
       />
 
       <Settings

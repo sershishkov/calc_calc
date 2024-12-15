@@ -36,10 +36,10 @@ import {
 
 export default function NavigationList({
   toggleDrawer,
-}: {
+}: Readonly<{
   // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   toggleDrawer: Function;
-}) {
+}>) {
   const router = useRouter();
   const session = useSession();
   const pathname = usePathname();
