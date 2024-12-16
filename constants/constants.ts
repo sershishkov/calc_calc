@@ -32,10 +32,6 @@ export const links_level_2 = [
     caption: `Опорное 10`,
   },
   {
-    link: `${link_folder_level_2}/ref_number_20`,
-    caption: `Опорное 20`,
-  },
-  {
     link: `${link_folder_level_2}/ref_number_100_above`,
     caption: `Опорное 100 над`,
   },

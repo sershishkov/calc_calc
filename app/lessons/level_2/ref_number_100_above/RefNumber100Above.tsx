@@ -14,12 +14,14 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 
 import Grid from '@mui/material/Grid2';
 
-import Description from './Description';
+import Description1 from './Description1';
+import Description2 from './Description2';
 
-export default function RefNumber10() {
-  const exerciseName = 'Уровень 2 Умножение чисел с опорным числом 10';
-  const [min, setMin] = useState('11');
-  const [max, setMax] = useState('21');
+export default function RefNumber100Above() {
+  const exerciseName =
+    'Уровень 2 Умножение чисел с опорным числом 100 (числа больше 100)';
+  const [min, setMin] = useState('101');
+  const [max, setMax] = useState('125');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] = useState<GenerateExampleAddMultSub>();
   const [userAnswer, setUserAnswer] = useState('');
@@ -98,12 +100,13 @@ export default function RefNumber10() {
       }}
     >
       <Header
-        hrefPrev='/lessons/level_1/simple_division'
-        hrefNext='/lessons/level_2/ref_number_100_above'
+        hrefPrev='/lessons/level_2/ref_number_10'
+        hrefNext='/lessons/level_2/ref_number_100_below'
         time={time}
         title={exerciseName}
       />
-      <Description />
+      <Description1 />
+      <Description2 />
       <Settings
         onChangeExamplesNumber={(e) => setExamplesNumber(e.target.value)}
         onChangeMin={(e) => setMin(e.target.value)}
@@ -113,8 +116,8 @@ export default function RefNumber10() {
         min={min}
         max={max}
         displaySettings={displaySettings}
-        displayMin={false}
-        displayMax={false}
+        displayMin={true}
+        displayMax={true}
         displayShowHints={true}
         showHints={showHints}
         onChangeShowHints={(e) => setShowHints(e.target.checked)}
@@ -131,7 +134,7 @@ export default function RefNumber10() {
         showHints={showHints}
         showPlusHints={true}
         showMinusHints={false}
-        refNumber={10}
+        refNumber={100}
       />
       <ReportOnlyResult
         onContinue={onContinue}

@@ -18,6 +18,7 @@ function DescrCellMain({
       variant={matches ? 'h3' : 'h6'}
       sx={{
         textAlign: align,
+        fontSize: matches ? '2.3rem' : '1rem',
       }}
     >
       {children}
