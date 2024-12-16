@@ -15,11 +15,9 @@ function Description() {
       }}
     >
       <DescAccordion title='Введение'>
-        <DescAccent>Опорное число</DescAccent>
+        <DescAccent>Опорное число 10 в качестве опорного</DescAccent>
 
-        <DescAccent>
-          Число 10 в качестве опорного Вернемся к примеру 7 х 8.
-        </DescAccent>
+        <DescAccent>Рассмотрим пример: 7 х 8.</DescAccent>
 
         <ExampleTableMult
           hintPlusLeft=''
@@ -100,42 +98,6 @@ function Description() {
           displayRowResults={true}
         />
 
-        <DescAccent>Число 100 в качестве опорного</DescAccent>
-        <DescrBody>
-          Каким было опорное число для примера 96 х 97 в главе 1? 100, поскольку
-          мы также выясняли, сколько не хватает у 96 и 97, чтобы получилось 100.
-          Пример, решенный полностью, теперь выглядел бы так:
-        </DescrBody>
-
-        <ExampleTableMult
-          hintPlusLeft=''
-          hintPlusRight=''
-          refNumber='100'
-          numberLeft='96'
-          numberRight='97'
-          valueIntermediate='9300'
-          hintMinusLeft='4'
-          hintMinusRight='3'
-          valueToAdd=''
-          valueToMinus='+12'
-          valueResult='9312'
-          displayRowPlusHits={false}
-          displayRowMinusHints={true}
-          displayRowResults={true}
-        />
-
-        <DescrBody>
-          Прием для счета в уме, который я приводил выше, просто заставляет вас
-          использовать данный метод. Давайте перемножим 98 на 98, и вы поймете,
-          что я имею в виду.
-        </DescrBody>
-        <DescrBody>
-          Вычитаем 98 и 98 из 100 и получаем 2 и 2. Отнимаем 2 от 98 и получаем
-          96. Но мы говорим не «девяносто шесть», а «девять тысяч шестьсот...».
-          9600 получится, когда мы умножим 96 на вспомогательное число 100.
-          Теперь перемножим числа в кружках. Произведение 2 на 2 равняется 4,
-          поэтому окончательным ответом будет 9604
-        </DescrBody>
         <DescrBody>
           Теперь вы, возможно, уже умеете быстро находить ответы для подобных
           примеров. Наверняка вполне освоили данный метод и применительно к

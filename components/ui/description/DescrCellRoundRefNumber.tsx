@@ -1,17 +1,22 @@
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import Typography from '@mui/material/Typography';
 
 function DescrCellRoundRefNumber({ text }: Readonly<{ text: string }>) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Typography
-      variant='h3'
+      variant={matches ? 'h3' : 'h6'}
       align='center'
-      color='error'
       sx={{
         borderRadius: '50%',
-        border: '2px solid #f00',
-        width: '3rem',
-        height: '3rem',
-        fontSize: '1.5rem',
+        border: matches ? '2px solid red' : '1px solid red',
+        width: matches ? '3rem' : '1.8rem',
+        height: matches ? '3rem' : '1.8rem',
+        fontSize: matches ? '1.7rem' : '.9rem',
+        color: 'red',
         lineHeight: 1.8,
       }}
     >

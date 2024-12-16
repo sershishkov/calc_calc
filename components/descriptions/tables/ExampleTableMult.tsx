@@ -25,7 +25,7 @@ function ExampleTableMult({
   displayRowPlusHits,
   displayRowMinusHints,
   displayRowResults,
-}: DescribeExampleTableMultInterface) {
+}: Readonly<DescribeExampleTableMultInterface>) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ width: '70%', minWidth: '300px', margin: 'auto' }}>
