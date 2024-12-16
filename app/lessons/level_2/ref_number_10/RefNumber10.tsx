@@ -11,20 +11,19 @@ import ExercieMultWithHints from '@/components/lessons/exercises/ExercieMultWith
 import ReportOnlyResult from '@/components/lessons/reports/ReportOnlyResult';
 
 import { ExampleSimpleInterface } from '@/interfaces/interfaces';
-import { addOrUpdateStatistic } from '@/lib/actions/statisticActions';
 
 import Grid from '@mui/material/Grid2';
 
 import Description from './Description.';
 
 export default function RefNumber10() {
-  const exerciseName = 'Умножение чисел с опорным числом 10';
+  const exerciseName = 'Уровень 2 Умножение чисел с опорным числом 10';
   const [min, setMin] = useState('11');
   const [max, setMax] = useState('21');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] = useState<GenerateExampleAddMultSub>();
   const [userAnswer, setUserAnswer] = useState('');
-  const [tasksOk, setTasksOk] = useState(0);
+
   const [displayExample, setDisplayExample] = useState(false);
   const [displaySettings, setDisplaySettings] = useState(true);
   const [displayStatistics, setDisplayStatistics] = useState(false);
@@ -68,7 +67,7 @@ export default function RefNumber10() {
     setUserAnswer('');
   };
 
-  const onAnswer = async () => {
+  const onAnswer = () => {
     const obj = {
       id: uuidv4(),
       example: `${example!.numberLeft} * ${example!.numberRight}`,
@@ -76,9 +75,7 @@ export default function RefNumber10() {
       rightAnswer: example!.resultMult,
       done: +userAnswer === +example!.resultMult,
     };
-    if (+userAnswer === +example!.resultMult) {
-      setTasksOk((prevState) => prevState + 1);
-    }
+
     setResultsList((prevState) => [...prevState, obj]);
 
     setUserAnswer('');
@@ -86,12 +83,6 @@ export default function RefNumber10() {
     if (Number(numberOf_Task) < Number(examplesNumber)) {
       nextTask();
     } else {
-      await addOrUpdateStatistic({
-        exerciseName,
-        tasksOk,
-        tasksError: Number(examplesNumber) - tasksOk,
-        exerciseTime: time,
-      });
       setDisplayExample(false);
       setDisplayStatistics(true);
       pause();
@@ -146,6 +137,8 @@ export default function RefNumber10() {
         onContinue={onContinue}
         resultsList={resultsList}
         display={displayStatistics}
+        exerciseName={exerciseName}
+        time={time}
       />
     </Grid>
   );

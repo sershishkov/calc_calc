@@ -14,18 +14,41 @@ import TableFooter from '@mui/material/TableFooter';
 import Paper from '@mui/material/Paper';
 
 import { ExampleSimpleInterface } from '@/interfaces/interfaces';
+import { addOrUpdateStatistic } from '@/lib/actions/statisticActions';
 
 function ReportOnlyResult({
   display,
   resultsList,
   onContinue,
+  exerciseName,
+  time,
 }: Readonly<{
   display: boolean;
   resultsList: ExampleSimpleInterface[];
+  exerciseName: string;
   onContinue: () => void;
+  time: number;
 }>) {
   useEffect(() => {
     if (display) {
+      let tasksOk = 0;
+      const saveFunction = async () => {
+        resultsList.forEach((item) => {
+          if (item.done) {
+            tasksOk += 1;
+          }
+        });
+        const tasksError = resultsList.length - tasksOk;
+        await addOrUpdateStatistic({
+          exerciseName,
+          tasksOk,
+          tasksError,
+          exerciseTime: time,
+        });
+      };
+
+      saveFunction();
+
       const buttonRepeat = document.getElementById('buttonRepeat');
       buttonRepeat!.focus();
     }

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { getMyStatistic } from '@/lib/actions/statisticActions';
 import { StatisticExerciseInterface } from '@/interfaces/refdata';
 
@@ -8,6 +9,11 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
+export const metadata: Metadata = {
+  title: 'Мои результаты',
+  description: 'Статистика упражнений',
+};
 
 export default async function StatisticPage() {
   const my_data = await getMyStatistic();

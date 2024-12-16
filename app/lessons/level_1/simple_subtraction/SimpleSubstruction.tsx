@@ -11,18 +11,17 @@ import ExerciseSimple from '@/components/lessons/exercises/ExerciseSimple';
 import ReportOnlyResult from '@/components/lessons/reports/ReportOnlyResult';
 
 import { ExampleSimpleInterface } from '@/interfaces/interfaces';
-import { addOrUpdateStatistic } from '@/lib/actions/statisticActions';
 
 import Grid from '@mui/material/Grid2';
 
 export default function SimpleSubstruction() {
-  const exerciseName = 'Простое вычитание чисел';
+  const exerciseName = 'Уровень 1 Простое вычитание чисел';
   const [min, setMin] = React.useState('1');
   const [max, setMax] = useState('100');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] = useState<GenerateExampleAddMultSub>();
   const [userAnswer, setUserAnswer] = useState('');
-  const [tasksOk, setTasksOk] = useState(0);
+
   const [displayExample, setDisplayExample] = useState(false);
   const [displaySettings, setDisplaySettings] = useState(true);
   const [displayStatistics, setDisplayStatistics] = useState(false);
@@ -66,7 +65,7 @@ export default function SimpleSubstruction() {
     setUserAnswer('');
   };
 
-  const onAnswer = async () => {
+  const onAnswer = () => {
     const obj = {
       id: uuidv4(),
       example: `${example!.numberLeft} - ${example!.numberRight}`,
@@ -74,9 +73,7 @@ export default function SimpleSubstruction() {
       rightAnswer: example!.resultSub,
       done: +userAnswer === +example!.resultSub,
     };
-    if (+userAnswer === +example!.resultSub) {
-      setTasksOk((prevState) => prevState + 1);
-    }
+
     setResultsList((prevState) => [...prevState, obj]);
 
     setUserAnswer('');
@@ -84,12 +81,6 @@ export default function SimpleSubstruction() {
     if (Number(numberOf_Task) < Number(examplesNumber)) {
       nextTask();
     } else {
-      await addOrUpdateStatistic({
-        exerciseName,
-        tasksOk,
-        tasksError: Number(examplesNumber) - tasksOk,
-        exerciseTime: time,
-      });
       setDisplayExample(false);
       setDisplayStatistics(true);
       pause();
@@ -143,6 +134,8 @@ export default function SimpleSubstruction() {
         onContinue={onContinue}
         resultsList={resultsList}
         display={displayStatistics}
+        exerciseName={exerciseName}
+        time={time}
       />
     </Grid>
   );
