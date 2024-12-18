@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import SimpleMultiplication from './SimpleMultiplication';
 
+const exerciseName = 'Уровень 1 Простое умножение чисел';
+
 export const metadata: Metadata = {
-  title: 'Простое умножение',
-  description: 'Простое умножение чисел',
+  title: exerciseName,
+  description: exerciseName,
 };
 
 export default function SimpleAdditionPage() {
-  return <SimpleMultiplication />;
+  return <SimpleMultiplication exerciseName={exerciseName} />;
 }

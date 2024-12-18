@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import SimpleSubstruction from './SimpleSubstruction';
 
+const exerciseName = 'Уровень 1 Простое вычитание чисел';
+
 export const metadata: Metadata = {
-  title: 'Простое вычитание',
-  description: 'Простое вычитание чисел',
+  title: exerciseName,
+  description: exerciseName,
 };
 
 export default function SimpleAdditionPage() {
-  return <SimpleSubstruction />;
+  return <SimpleSubstruction exerciseName={exerciseName} />;
 }

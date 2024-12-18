@@ -14,8 +14,11 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 
 import Grid from '@mui/material/Grid2';
 
-export default function SimpleAddition() {
-  const exerciseName = 'Уровень 1 Простое сложение чисел';
+export default function SimpleAddition({
+  exerciseName,
+}: Readonly<{
+  exerciseName: string;
+}>) {
   const [min, setMin] = React.useState('1');
   const [max, setMax] = useState('100');
   const [examplesNumber, setExamplesNumber] = useState('10');

@@ -17,9 +17,11 @@ import Grid from '@mui/material/Grid2';
 import Description1 from './Description1';
 import Description2 from './Description2';
 
-export default function RefNumber100Above() {
-  const exerciseName =
-    'Уровень 2 Умножение чисел с опорным числом 100 (числа больше 100)';
+export default function RefNumber100Above({
+  exerciseName,
+}: Readonly<{
+  exerciseName: string;
+}>) {
   const [min, setMin] = useState('101');
   const [max, setMax] = useState('125');
   const [examplesNumber, setExamplesNumber] = useState('10');

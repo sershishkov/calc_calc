@@ -14,8 +14,11 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 
 import Grid from '@mui/material/Grid2';
 
-export default function SimpleMultiplication() {
-  const exerciseName = 'Уровень 1 Простое умножение чисел';
+export default function SimpleMultiplication({
+  exerciseName,
+}: Readonly<{
+  exerciseName: string;
+}>) {
   const [min, setMin] = React.useState('1');
   const [max, setMax] = useState('10');
   const [examplesNumber, setExamplesNumber] = useState('10');

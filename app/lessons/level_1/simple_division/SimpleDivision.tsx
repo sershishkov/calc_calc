@@ -14,8 +14,11 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 
 import Grid from '@mui/material/Grid2';
 
-export default function SimpleDivision() {
-  const exerciseName = 'Уровень 1 Простое деление чисел';
+export default function SimpleDivision({
+  exerciseName,
+}: Readonly<{
+  exerciseName: string;
+}>) {
   const [min, setMin] = React.useState('1');
   const [max, setMax] = useState('100');
   const [examplesNumber, setExamplesNumber] = useState('10');
