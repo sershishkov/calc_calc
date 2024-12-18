@@ -62,3 +62,23 @@ export interface ExampleCheckAnswerObjInterface {
 
   doneCheck: boolean;
 }
+
+export interface ExampleSimpleAndCheckAnswerObjInterface {
+  id?: string;
+  example: string;
+  userAnswer: string;
+  userAnswerCheckNumberLeft: string;
+  userAnswerCheckNumberRight: string;
+  userAnswerCheckResultLeft: string;
+  userAnswerCheckResultRight: string;
+
+  resultRight: number;
+  checkNumberLeft: number;
+  checkNumberRight: number;
+  checkResultLeft: number;
+  checkResultRight: number;
+
+  doneExample: boolean;
+  doneCheck: boolean;
+  doneExcercise: boolean;
+}

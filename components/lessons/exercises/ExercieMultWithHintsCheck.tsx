@@ -6,20 +6,19 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
-import { operators } from '../../../utils/constants';
-import ButtonStop from '../../ui/buttons/ButtonStop';
-import ButtonOk from '../../ui/buttons/ButtonOk';
-import InputCircleCheck from '../../ui/inputs/InputCircleCheck';
+import ButtonStop from '@/components/ui/buttons/ButtonStop';
+import ButtonOk from '@/components/ui/buttons/ButtonOk';
+import InputCircleCheck from '@/components/ui/inputs/InputCircleCheck';
 
-import DescrCellMain from '../../ui/description/DescrCellMain';
-import ExerciseHeader from '../../ui/description/ExerciseHeader';
-import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNumber';
-import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';
-import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
+import DescrCellMain from '@/components/ui/description/DescrCellMain';
+import ExerciseHeader from '@/components/ui/description/ExerciseHeader';
+import DescrCellRoundHintNumber from '@/components/ui/description/DescrCellRoundHintNumber';
+import DescrCellRoundRefNumber from '@/components/ui/description/DescrCellRoundRefNumber';
+import InputUserAnswerSimple from '@/components/ui/inputs/InputUserAnswerSimple';
 
-import { generateExample__ForCheckMultiplication } from '../../../utils/generateExample';
+import { GenerateExampleForCheckMultiplication } from '@/utils/generateExample';
 
 function ExercieMultWithHintsCheck({
   displayExample,
@@ -34,19 +33,19 @@ function ExercieMultWithHintsCheck({
   showPlusHints,
   showMinusHints,
   refNumber,
-  userAnswer_CheckNumberLeft,
-  userAnswer_CheckNumberRight,
-  userAnswer_CheckResultLeft,
-  userAnswer_CheckResultRight,
+  userAnswerCheckNumberLeft,
+  userAnswerCheckNumberRight,
+  userAnswerCheckResultLeft,
+  userAnswerCheckResultRight,
 
-  setAnswer_CheckNumberLeft,
-  setAnswer_CheckNumberRight,
-  setAnswer_CheckResultLeft,
-  setAnswer_CheckResultRight,
-}: {
+  setAnswerCheckNumberLeft,
+  setAnswerCheckNumberRight,
+  setAnswerCheckResultLeft,
+  setAnswerCheckResultRight,
+}: Readonly<{
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: generateExample__ForCheckMultiplication;
+  example: GenerateExampleForCheckMultiplication;
   operator: string;
   userAnswer: string;
   onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
@@ -56,16 +55,16 @@ function ExercieMultWithHintsCheck({
   showPlusHints: boolean;
   showMinusHints: boolean;
   refNumber: number;
-  userAnswer_CheckNumberLeft: string;
-  userAnswer_CheckNumberRight: string;
-  userAnswer_CheckResultLeft: string;
-  userAnswer_CheckResultRight: string;
+  userAnswerCheckNumberLeft: string;
+  userAnswerCheckNumberRight: string;
+  userAnswerCheckResultLeft: string;
+  userAnswerCheckResultRight: string;
 
-  setAnswer_CheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
-}) {
+  setAnswerCheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
+}>) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
@@ -74,8 +73,8 @@ function ExercieMultWithHintsCheck({
   }, [displayExample]);
 
   return (
-    <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-      <Grid item sx={{ flex: 1, padding: '10px' }}>
+    <Grid container sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
       <ExerciseHeader align='center'>
@@ -149,7 +148,7 @@ function ExercieMultWithHintsCheck({
                   </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
+                  <DescrCellMain align='center'>=</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <InputUserAnswerSimple
@@ -161,7 +160,7 @@ function ExercieMultWithHintsCheck({
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckNumberLeft_input =
-                          document.getElementById('userAnswer_CheckNumberLeft');
+                          document.getElementById('userAnswerCheckNumberLeft');
 
                         userAnswer_CheckNumberLeft_input!.focus();
                       }
@@ -226,16 +225,14 @@ function ExercieMultWithHintsCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckNumberLeft'
-                    name='userAnswer_CheckNumberLeft'
-                    value={userAnswer_CheckNumberLeft}
-                    onChange={setAnswer_CheckNumberLeft}
+                    id='userAnswerCheckNumberLeft'
+                    name='userAnswerCheckNumberLeft'
+                    value={userAnswerCheckNumberLeft}
+                    onChange={setAnswerCheckNumberLeft}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckNumberRight_input =
-                          document.getElementById(
-                            'userAnswer_CheckNumberRight'
-                          );
+                          document.getElementById('userAnswerCheckNumberRight');
 
                         userAnswer_CheckNumberRight_input!.focus();
                       }
@@ -250,14 +247,14 @@ function ExercieMultWithHintsCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckNumberRight'
-                    name='userAnswer_CheckNumberRight'
-                    value={userAnswer_CheckNumberRight}
-                    onChange={setAnswer_CheckNumberRight}
+                    id='userAnswerCheckNumberRight'
+                    name='userAnswerCheckNumberRight'
+                    value={userAnswerCheckNumberRight}
+                    onChange={setAnswerCheckNumberRight}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckResultLeft_input =
-                          document.getElementById('userAnswer_CheckResultLeft');
+                          document.getElementById('userAnswerCheckResultLeft');
 
                         userAnswer_CheckResultLeft_input!.focus();
                       }
@@ -280,16 +277,14 @@ function ExercieMultWithHintsCheck({
                   colSpan={3}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckResultLeft'
-                    name='userAnswer_CheckResultLeft'
-                    value={userAnswer_CheckResultLeft}
-                    onChange={setAnswer_CheckResultLeft}
+                    id='userAnswerCheckResultLeft'
+                    name='userAnswerCheckResultLeft'
+                    value={userAnswerCheckResultLeft}
+                    onChange={setAnswerCheckResultLeft}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckResultRight_input =
-                          document.getElementById(
-                            'userAnswer_CheckResultRight'
-                          );
+                          document.getElementById('userAnswerCheckResultRight');
 
                         userAnswer_CheckResultRight_input!.focus();
                       }
@@ -305,10 +300,10 @@ function ExercieMultWithHintsCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckResultRight'
-                    name='userAnswer_CheckResultRight'
-                    value={userAnswer_CheckResultRight}
-                    onChange={setAnswer_CheckResultRight}
+                    id='userAnswerCheckResultRight'
+                    name='userAnswerCheckResultRight'
+                    value={userAnswerCheckResultRight}
+                    onChange={setAnswerCheckResultRight}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const answerButton =
@@ -329,10 +324,10 @@ function ExercieMultWithHintsCheck({
                     tabIndex={undefined}
                     disabled={
                       userAnswer.length < 1 ||
-                      userAnswer_CheckNumberLeft.length < 1 ||
-                      userAnswer_CheckNumberRight.length < 1 ||
-                      userAnswer_CheckResultLeft.length < 1 ||
-                      userAnswer_CheckResultRight.length < 1
+                      userAnswerCheckNumberLeft.length < 1 ||
+                      userAnswerCheckNumberRight.length < 1 ||
+                      userAnswerCheckResultLeft.length < 1 ||
+                      userAnswerCheckResultRight.length < 1
                     }
                   >
                     {numberOf_Task}

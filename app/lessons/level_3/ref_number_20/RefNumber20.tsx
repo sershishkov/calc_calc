@@ -7,25 +7,26 @@ import { GenerateExampleForCheckMultiplication } from '@/utils/generateExample';
 
 import Header from '@/components/lessons/header/Header';
 import Settings from '@/components/lessons/settings/Settings';
-import ExerciseCheck from '@/components/lessons/exercises/ExerciseCheck';
-import ReportOnlyCheck from '@/components/lessons/reports/ReportOnlyCheck';
+import ExercieMultWithHintsCheck from '@/components/lessons/exercises/ExercieMultWithHintsCheck';
+import ReportResultAndCheck from '@/components/lessons/reports/ReportResultAndCheck';
 
-import { ExampleCheckAnswerObjInterface } from '@/interfaces/refdata';
+import { ExampleSimpleAndCheckAnswerObjInterface } from '@/interfaces/refdata';
 
 import Grid from '@mui/material/Grid2';
 
 import Description from './Description';
 
-export default function CheckingAnswers({
+export default function RefNumber20({
   exerciseName,
 }: Readonly<{
   exerciseName: string;
 }>) {
-  const [min, setMin] = useState('101');
-  const [max, setMax] = useState('999');
+  const [min, setMin] = useState('11');
+  const [max, setMax] = useState('35');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] =
     useState<GenerateExampleForCheckMultiplication>();
+  const [userAnswer, setUserAnswer] = useState('');
   const [userAnswerCheckNumberLeft, setUserAnswerCheckNumberLeft] =
     useState('');
   const [userAnswerCheckNumberRight, setUserAnswerCheckNumberRight] =
@@ -41,8 +42,9 @@ export default function CheckingAnswers({
 
   const [numberOf_Task, setNumberOf_Task] = useState(0);
   const [resultsList, setResultsList] = useState<
-    ExampleCheckAnswerObjInterface[]
+    ExampleSimpleAndCheckAnswerObjInterface[]
   >([]);
+  const [showHints, setShowHints] = useState(true);
 
   const { time, start, pause, reset } = useTimer();
   const onStart = () => {
@@ -58,6 +60,7 @@ export default function CheckingAnswers({
     setDisplayStatistics(false);
     setNumberOf_Task(0);
     setResultsList([]);
+    setUserAnswer('');
 
     setUserAnswerCheckNumberLeft('');
     setUserAnswerCheckNumberRight('');
@@ -70,10 +73,8 @@ export default function CheckingAnswers({
       new GenerateExampleForCheckMultiplication(Number(min), Number(max))
     );
     setNumberOf_Task((prevState) => prevState + 1);
-    const userAnswer_CheckNumberLeftInput = document.getElementById(
-      'userAnswerCheckNumberLeft'
-    );
-    userAnswer_CheckNumberLeftInput!.focus();
+    const userAnswerInput = document.getElementById('userAnswer');
+    userAnswerInput!.focus();
   };
   const onContinue = () => {
     nextTask();
@@ -84,6 +85,7 @@ export default function CheckingAnswers({
     setNumberOf_Task(0);
     setDisplaySettings(true);
     setResultsList([]);
+    setUserAnswer('');
 
     setUserAnswerCheckNumberLeft('');
     setUserAnswerCheckNumberRight('');
@@ -92,31 +94,36 @@ export default function CheckingAnswers({
   };
 
   const onAnswer = () => {
+    const doneExample = +userAnswer === example!.resultRight;
+    const doneCheck =
+      +userAnswerCheckNumberLeft === example!.checkNumberLeft &&
+      +userAnswerCheckNumberRight === example!.checkNumberRight &&
+      +userAnswerCheckResultLeft === example!.checkResultLeft &&
+      +userAnswerCheckResultRight === example!.checkResultRight;
     const obj = {
       id: uuidv4(),
-      example: `${example!.numberLeft} * ${example!.numberRight} = ${
-        example!.resultRight
-      } `,
+      example: `${example!.numberLeft} * ${example!.numberRight}`,
 
+      userAnswer,
       userAnswerCheckNumberLeft,
       userAnswerCheckNumberRight,
       userAnswerCheckResultLeft,
       userAnswerCheckResultRight,
 
+      resultRight: example!.resultRight,
       checkNumberLeft: example!.checkNumberLeft,
       checkNumberRight: example!.checkNumberRight,
       checkResultLeft: example!.checkResultLeft,
       checkResultRight: example!.checkResultRight,
 
-      doneCheck:
-        +userAnswerCheckNumberLeft === example!.checkNumberLeft &&
-        +userAnswerCheckNumberRight === example!.checkNumberRight &&
-        +userAnswerCheckResultLeft === example!.checkResultLeft &&
-        +userAnswerCheckResultRight === example!.checkResultRight,
+      doneExample,
+      doneCheck,
+      doneExcercise: doneExample && doneCheck,
     };
 
     setResultsList((prevState) => [...prevState, obj]);
 
+    setUserAnswer('');
     setUserAnswerCheckNumberLeft('');
     setUserAnswerCheckNumberRight('');
     setUserAnswerCheckResultLeft('');
@@ -140,13 +147,12 @@ export default function CheckingAnswers({
       }}
     >
       <Header
-        hrefPrev='/lessons/level_2/ref_number_100_mix'
-        hrefNext='/lessons/level_3/ref_number_20'
+        hrefPrev='/lessons/level_2/checking_answers'
+        hrefNext='/lessons/level_3/ref_number_50'
         time={time}
         title={exerciseName}
       />
       <Description />
-
       <Settings
         onChangeExamplesNumber={(e) => setExamplesNumber(e.target.value)}
         onChangeMin={(e) => setMin(e.target.value)}
@@ -158,15 +164,23 @@ export default function CheckingAnswers({
         displaySettings={displaySettings}
         displayMin={false}
         displayMax={false}
-        displayShowHints={false}
-        showHints={false}
-        onChangeShowHints={() => {}}
+        displayShowHints={true}
+        showHints={showHints}
+        onChangeShowHints={(e) => setShowHints(e.target.checked)}
       />
-      <ExerciseCheck
+      <ExercieMultWithHintsCheck
         displayExample={displayExample}
         onStopExercise={onStopExercise}
         example={example!}
         operator={'*'}
+        userAnswer={userAnswer}
+        onChangeUserAnswer={(e) => setUserAnswer(e.target.value)}
+        onAnswer={onAnswer}
+        numberOf_Task={numberOf_Task}
+        showHints={showHints}
+        showPlusHints={true}
+        showMinusHints={true}
+        refNumber={20}
         userAnswerCheckNumberLeft={userAnswerCheckNumberLeft}
         userAnswerCheckNumberRight={userAnswerCheckNumberRight}
         userAnswerCheckResultLeft={userAnswerCheckResultLeft}
@@ -183,10 +197,8 @@ export default function CheckingAnswers({
         setAnswerCheckResultRight={(e: any) =>
           setUserAnswerCheckResultRight(e.target.value)
         }
-        onAnswer={onAnswer}
-        numberOf_Task={numberOf_Task}
       />
-      <ReportOnlyCheck
+      <ReportResultAndCheck
         onContinue={onContinue}
         resultsList={resultsList}
         displayStatistics={displayStatistics}

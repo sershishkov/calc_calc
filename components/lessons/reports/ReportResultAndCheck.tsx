@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 
-import ButtonSave from '../../ui/buttons/ButtonSave';
 import ButtonRepeat from '../../ui/buttons/ButtonRepeat';
 
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,26 +13,48 @@ import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 import Paper from '@mui/material/Paper';
 
-import { I_exampleSimple_and_CheckAnswer_Obj } from '../../../interfaces/interfaces';
+import { ExampleSimpleAndCheckAnswerObjInterface } from '@/interfaces/refdata';
+import { addOrUpdateStatistic } from '@/lib/actions/statisticActions';
 
 function ReportResultAndCheck({
   displayStatistics,
   resultsList,
   onContinue,
-}: {
+  exerciseName,
+  time,
+}: Readonly<{
   displayStatistics: boolean;
-  resultsList: I_exampleSimple_and_CheckAnswer_Obj[];
+  resultsList: ExampleSimpleAndCheckAnswerObjInterface[];
   onContinue: () => void;
-}) {
+  exerciseName: string;
+  time: number;
+}>) {
   useEffect(() => {
     if (displayStatistics) {
+      let tasksOk = 0;
+      const saveFunction = async () => {
+        resultsList.forEach((item) => {
+          if (item.doneExcercise) {
+            tasksOk += 1;
+          }
+        });
+        const tasksError = resultsList.length - tasksOk;
+        await addOrUpdateStatistic({
+          exerciseName,
+          tasksOk,
+          tasksError,
+          exerciseTime: time,
+        });
+      };
+
+      saveFunction();
       const buttonRepeat = document.getElementById('buttonRepeat');
       buttonRepeat!.focus();
     }
   }, [displayStatistics]);
 
   return (
-    <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
+    <Grid container sx={{ display: displayStatistics ? 'block' : 'none' }}>
       <Typography variant='h4' align='center'>
         Ваши результаты
       </Typography>
@@ -91,8 +112,8 @@ function ReportResultAndCheck({
           <TableBody>
             {resultsList &&
               resultsList.length > 0 &&
-              resultsList.map((item, index) => (
-                <TableRow key={index} sx={{}}>
+              resultsList.map((item) => (
+                <TableRow key={item.id} sx={{}}>
                   <TableCell>
                     <Typography variant='h6' align='center'>
                       {item.example}
@@ -105,12 +126,12 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           Ваш
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           Комп
                         </Typography>
@@ -125,7 +146,7 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography
                           variant='h6'
                           align='center'
@@ -138,7 +159,7 @@ function ReportResultAndCheck({
                           {item.userAnswer}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           {item.resultRight}
                         </Typography>
@@ -153,22 +174,22 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography
                           variant='h6'
                           align='center'
                           color={
-                            Number(item.userAnswer_CheckNumberLeft) -
+                            Number(item.userAnswerCheckNumberLeft) -
                               item.checkNumberLeft ===
                             0
                               ? 'success.main'
                               : 'error.main'
                           }
                         >
-                          {item.userAnswer_CheckNumberLeft}
+                          {item.userAnswerCheckNumberLeft}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           {item.checkNumberLeft}
                         </Typography>
@@ -183,22 +204,22 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography
                           variant='h6'
                           align='center'
                           color={
-                            Number(item.userAnswer_CheckNumberRight) -
+                            Number(item.userAnswerCheckNumberRight) -
                               item.checkNumberRight ===
                             0
                               ? 'success.main'
                               : 'error.main'
                           }
                         >
-                          {item.userAnswer_CheckNumberRight}
+                          {item.userAnswerCheckNumberRight}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           {item.checkNumberRight}
                         </Typography>
@@ -213,22 +234,22 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography
                           variant='h6'
                           align='center'
                           color={
-                            Number(item.userAnswer_CheckResultLeft) -
+                            Number(item.userAnswerCheckResultLeft) -
                               item.checkResultLeft ===
                             0
                               ? 'success.main'
                               : 'error.main'
                           }
                         >
-                          {item.userAnswer_CheckResultLeft}
+                          {item.userAnswerCheckResultLeft}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           {item.checkResultLeft}
                         </Typography>
@@ -243,22 +264,22 @@ function ReportResultAndCheck({
                       alignItems='center'
                       direction='column'
                     >
-                      <Grid item>
+                      <Grid>
                         <Typography
                           variant='h6'
                           align='center'
                           color={
-                            Number(item.userAnswer_CheckResultRight) -
+                            Number(item.userAnswerCheckResultRight) -
                               item.checkResultRight ===
                             0
                               ? 'success.main'
                               : 'error.main'
                           }
                         >
-                          {item.userAnswer_CheckResultRight}
+                          {item.userAnswerCheckResultRight}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid>
                         <Typography variant='h6' align='center'>
                           {item.checkResultRight}
                         </Typography>
@@ -286,7 +307,7 @@ function ReportResultAndCheck({
                   alignItems='center'
                   flexDirection='column-reverse'
                 >
-                  <Grid item sx={{ width: '100%' }}>
+                  <Grid sx={{ width: '100%' }}>
                     <ButtonRepeat onClick={onContinue} id='buttonRepeat' />
                   </Grid>
                 </Grid>
