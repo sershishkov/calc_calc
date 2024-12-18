@@ -1,4 +1,6 @@
 import TextField from '@mui/material/TextField';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function InputUserAnswerSimple({
   name,
@@ -17,6 +19,8 @@ Readonly<{
   label: string;
   // display:string,
 }>) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <TextField
       name={name}
@@ -26,11 +30,23 @@ Readonly<{
       value={value}
       onChange={onChange}
       onKeyDown={onKeyPress}
-      sx={
-        {
-          // display: display,
-        }
-      }
+      sx={{
+        input: {
+          padding: 0,
+          textAlign: 'left',
+
+          // width: matches ? '3rem' : '1.8rem',
+          height: matches ? '3rem' : '1.8rem',
+          border: matches ? undefined : '1px solid #0F0',
+          fontSize: matches ? '2.3rem' : '1rem',
+        },
+        label: {
+          display: matches ? undefined : 'none',
+        },
+        // fieldset: {
+        //   display: 'none',
+        // },
+      }}
     />
   );
 }

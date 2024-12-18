@@ -6,65 +6,63 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
-import { operators } from '../../../utils/constants';
-import ButtonStop from '../../ui/buttons/ButtonStop';
-import ButtonOk from '../../ui/buttons/ButtonOk';
-import ExerciseHeader from '../../ui/description/ExerciseHeader';
-import InputCircleCheck from '../../ui/inputs/InputCircleCheck';
-import DescrCellMain from '../../ui/description/DescrCellMain';
+import ButtonStop from '@/components/ui/buttons/ButtonStop';
+import ButtonOk from '@/components/ui/buttons/ButtonOk';
+import ExerciseHeader from '@/components/ui/description/ExerciseHeader';
+import InputCircleCheck from '@/components/ui/inputs/InputCircleCheck';
+import DescrCellMain from '@/components/ui/description/DescrCellMain';
 
-import { generateExample__ForCheckMultiplication } from '../../../utils/generateExample';
+import { GenerateExampleForCheckMultiplication } from '@/utils/generateExample';
 
 function ExerciseCheck({
   displayExample,
   onStopExercise,
   example,
   operator,
-  userAnswer_CheckNumberLeft,
-  userAnswer_CheckNumberRight,
-  userAnswer_CheckResultLeft,
-  userAnswer_CheckResultRight,
+  userAnswerCheckNumberLeft,
+  userAnswerCheckNumberRight,
+  userAnswerCheckResultLeft,
+  userAnswerCheckResultRight,
 
-  setAnswer_CheckNumberLeft,
-  setAnswer_CheckNumberRight,
-  setAnswer_CheckResultLeft,
-  setAnswer_CheckResultRight,
+  setAnswerCheckNumberLeft,
+  setAnswerCheckNumberRight,
+  setAnswerCheckResultLeft,
+  setAnswerCheckResultRight,
 
   onAnswer,
   numberOf_Task,
-}: {
+}: Readonly<{
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: generateExample__ForCheckMultiplication;
+  example: GenerateExampleForCheckMultiplication;
   operator: string;
-  userAnswer_CheckNumberLeft: string;
-  userAnswer_CheckNumberRight: string;
-  userAnswer_CheckResultLeft: string;
-  userAnswer_CheckResultRight: string;
+  userAnswerCheckNumberLeft: string;
+  userAnswerCheckNumberRight: string;
+  userAnswerCheckResultLeft: string;
+  userAnswerCheckResultRight: string;
 
-  setAnswer_CheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
-  setAnswer_CheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswerCheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
 
   onAnswer: () => void;
   numberOf_Task: number;
-}) {
+}>) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer_CheckNumberLeft__input = document.getElementById(
-        'userAnswer_CheckNumberLeft'
+        'userAnswerCheckNumberLeft'
       );
       userAnswer_CheckNumberLeft__input!.focus();
     }
   }, [displayExample]);
-  // const theme = useTheme();
-  // const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
-    <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-      <Grid item sx={{ flex: 1, padding: '10px' }}>
+    <Grid container sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
 
@@ -99,7 +97,7 @@ function ExerciseCheck({
                   </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
+                  <DescrCellMain align='center'>=</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <DescrCellMain align='center'>
@@ -116,16 +114,14 @@ function ExerciseCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckNumberLeft'
-                    name='userAnswer_CheckNumberLeft'
-                    value={userAnswer_CheckNumberLeft}
-                    onChange={setAnswer_CheckNumberLeft}
+                    id='userAnswerCheckNumberLeft'
+                    name='userAnswerCheckNumberLeft'
+                    value={userAnswerCheckNumberLeft}
+                    onChange={setAnswerCheckNumberLeft}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckNumberRight_input =
-                          document.getElementById(
-                            'userAnswer_CheckNumberRight'
-                          );
+                          document.getElementById('userAnswerCheckNumberRight');
 
                         userAnswer_CheckNumberRight_input!.focus();
                       }
@@ -140,14 +136,14 @@ function ExerciseCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckNumberRight'
-                    name='userAnswer_CheckNumberRight'
-                    value={userAnswer_CheckNumberRight}
-                    onChange={setAnswer_CheckNumberRight}
+                    id='userAnswerCheckNumberRight'
+                    name='userAnswerCheckNumberRight'
+                    value={userAnswerCheckNumberRight}
+                    onChange={setAnswerCheckNumberRight}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckResultLeft_input =
-                          document.getElementById('userAnswer_CheckResultLeft');
+                          document.getElementById('userAnswerCheckResultLeft');
 
                         userAnswer_CheckResultLeft_input!.focus();
                       }
@@ -167,16 +163,14 @@ function ExerciseCheck({
                   colSpan={3}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckResultLeft'
-                    name='userAnswer_CheckResultLeft'
-                    value={userAnswer_CheckResultLeft}
-                    onChange={setAnswer_CheckResultLeft}
+                    id='userAnswerCheckResultLeft'
+                    name='userAnswerCheckResultLeft'
+                    value={userAnswerCheckResultLeft}
+                    onChange={setAnswerCheckResultLeft}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const userAnswer_CheckResultRight_input =
-                          document.getElementById(
-                            'userAnswer_CheckResultRight'
-                          );
+                          document.getElementById('userAnswerCheckResultRight');
 
                         userAnswer_CheckResultRight_input!.focus();
                       }
@@ -192,10 +186,10 @@ function ExerciseCheck({
                   }}
                 >
                   <InputCircleCheck
-                    id='userAnswer_CheckResultRight'
-                    name='userAnswer_CheckResultRight'
-                    value={userAnswer_CheckResultRight}
-                    onChange={setAnswer_CheckResultRight}
+                    id='userAnswerCheckResultRight'
+                    name='userAnswerCheckResultRight'
+                    value={userAnswerCheckResultRight}
+                    onChange={setAnswerCheckResultRight}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         const answerButton =
@@ -214,10 +208,10 @@ function ExerciseCheck({
                     id='answerButton'
                     onClick={onAnswer}
                     disabled={
-                      userAnswer_CheckNumberLeft.length < 1 ||
-                      userAnswer_CheckNumberRight.length < 1 ||
-                      userAnswer_CheckResultLeft.length < 1 ||
-                      userAnswer_CheckResultRight.length < 1
+                      userAnswerCheckNumberLeft.length < 1 ||
+                      userAnswerCheckNumberRight.length < 1 ||
+                      userAnswerCheckResultLeft.length < 1 ||
+                      userAnswerCheckResultRight.length < 1
                     }
                     tabIndex={undefined}
                   >

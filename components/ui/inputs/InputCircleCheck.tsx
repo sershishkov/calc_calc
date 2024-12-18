@@ -1,4 +1,6 @@
 import TextField from '@mui/material/TextField';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function InputCircleCheck({
   id,
@@ -6,13 +8,15 @@ function InputCircleCheck({
   value,
   onChange,
   onKeyPress,
-}: {
+}: Readonly<{
   id: string;
   name: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
-}) {
+}>) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <TextField
       type='number'
@@ -20,7 +24,7 @@ function InputCircleCheck({
       name={name}
       value={value}
       onChange={onChange}
-      onKeyPress={onKeyPress}
+      onKeyUp={onKeyPress}
       onInput={(e) => {
         (e.target as HTMLInputElement).value = Math.max(
           0,
@@ -38,13 +42,13 @@ function InputCircleCheck({
           padding: 0,
           textAlign: 'center',
           borderRadius: '50%',
-          width: '3rem',
-          height: '3rem',
-          border: '2px solid #0F0',
-          fontSize: '2rem',
+          width: matches ? '3rem' : '1.8rem',
+          height: matches ? '3rem' : '1.8rem',
+          border: matches ? '2px solid #0F0' : '1px solid #0F0',
+          fontSize: matches ? '2.3rem' : '1rem',
           color: '#F00',
           '&:hover,&:focus,&:active': {
-            border: '2px solid #F00',
+            border: matches ? '2px solid #F00' : '1px solid #F00',
           },
         },
       }}

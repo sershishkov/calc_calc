@@ -1,5 +1,13 @@
-import React from 'react';
+import type { Metadata } from 'next';
+import CheckingAnswers from './CheckingAnswers';
+
+const exerciseName = 'Уровень 2 Проверка ответов';
+
+export const metadata: Metadata = {
+  title: exerciseName,
+  description: exerciseName,
+};
 
 export default function CheckingAnswersPage() {
-  return <div>CheckingAnswersPage</div>;
+  return <CheckingAnswers exerciseName={exerciseName} />;
 }

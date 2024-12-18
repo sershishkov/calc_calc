@@ -34,3 +34,31 @@ export interface DescribeExampleTableMultInterface {
   displayRowMinusHints: boolean;
   displayRowResults: boolean;
 }
+
+export interface DescribeCheckTableInterface {
+  numberLeft: number;
+  operator: string;
+  numberRight: number;
+  valueResult: number;
+  checkLeft: number;
+  checkRight: number;
+  checkSumLeft: number;
+  checkResult: number;
+  displayRowTotal: boolean;
+}
+
+export interface ExampleCheckAnswerObjInterface {
+  id?: string;
+  example: string;
+  userAnswerCheckNumberLeft: string;
+  userAnswerCheckNumberRight: string;
+  userAnswerCheckResultLeft: string;
+  userAnswerCheckResultRight: string;
+
+  checkNumberLeft: number;
+  checkNumberRight: number;
+  checkResultLeft: number;
+  checkResultRight: number;
+
+  doneCheck: boolean;
+}
