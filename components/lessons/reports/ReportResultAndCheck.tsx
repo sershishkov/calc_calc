@@ -54,7 +54,10 @@ function ReportResultAndCheck({
   }, [displayStatistics]);
 
   return (
-    <Grid container sx={{ display: displayStatistics ? 'block' : 'none' }}>
+    <Grid
+      container
+      sx={{ display: displayStatistics ? 'block' : 'none', width: '100%' }}
+    >
       <Typography variant='h4' align='center'>
         Ваши результаты
       </Typography>

@@ -27,7 +27,10 @@ function Header({
         container
         alignItems='center'
         justifyContent='space-between'
-        // sx={{ border: '1px solid red', width: '100%' }}
+        sx={{
+          //  border: '1px solid red',
+          width: '100%',
+        }}
       >
         <Grid container alignItems='center' justifyContent='flex-start'>
           <Grid
