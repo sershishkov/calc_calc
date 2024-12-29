@@ -25,16 +25,16 @@ export default function Statistic({ my_data }: { my_data: any }) {
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const StatisticDesktop = () => (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer component={Paper} sx={{ maxHeight: 750 }}>
+      <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell>Урок</TableCell>
-            <TableCell>Правильные</TableCell>
-            <TableCell>Ошибка</TableCell>
-            <TableCell>Время на упражнение</TableCell>
-            <TableCell>Мин время на задачу</TableCell>
-            <TableCell>Всего задач в упражнении:</TableCell>
+            <TableCell align='center'>Правильные</TableCell>
+            <TableCell align='center'>Ошибка</TableCell>
+            <TableCell align='center'>Время (сек)</TableCell>
+            <TableCell align='center'>Рекорд (сек)</TableCell>
+            <TableCell align='center'>Решено задач:</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
