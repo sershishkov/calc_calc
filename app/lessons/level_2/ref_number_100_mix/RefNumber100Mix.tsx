@@ -15,6 +15,7 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 import Grid from '@mui/material/Grid2';
 
 import Description from './Description';
+import Description2 from './Description_2';
 
 export default function RefNumber100Mix({
   exerciseName,
@@ -107,6 +108,7 @@ export default function RefNumber100Mix({
         title={exerciseName}
       />
       <Description />
+      <Description2 />
 
       <Settings
         onChangeExamplesNumber={(e) => setExamplesNumber(e.target.value)}

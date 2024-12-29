@@ -148,7 +148,7 @@ export default function RefNumber500({
     >
       <Header
         hrefPrev='/lessons/level_3/ref_number_200'
-        hrefNext='/lessons/level_3/decimals'
+        hrefNext='/lessons/level_3/two_ref_numbers'
         time={time}
         title={exerciseName}
       />

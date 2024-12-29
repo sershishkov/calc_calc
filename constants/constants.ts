@@ -66,10 +66,7 @@ export const links_level_3 = [
     link: `${link_folder_level_3}/ref_number_500`,
     caption: `Опорное 500`,
   },
-  {
-    link: `${link_folder_level_3}/decimals`,
-    caption: `Десятичные`,
-  },
+
   {
     link: `${link_folder_level_3}/two_ref_numbers`,
     caption: `Два опорных`,
