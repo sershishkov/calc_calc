@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
 function InputDigitForAddingColumn({
   name,
@@ -8,17 +8,16 @@ function InputDigitForAddingColumn({
   onChange,
   onKeyPress,
   tabIndex,
-}: {
+}: Readonly<{
   id: string;
   name: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   tabIndex: number;
-}) {
+}>) {
   return (
     <Grid
-      item
       sx={{
         marginRight: '7px',
       }}

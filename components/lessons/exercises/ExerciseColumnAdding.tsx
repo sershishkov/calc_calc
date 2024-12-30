@@ -1,13 +1,14 @@
-import NumberForAdditionColumn from '../../ui/excerises/NumberForAdditionColumn';
-import InputDigitForAddingColumn from '../../ui/inputs/InputDigitForAddingColumn';
-import Grid from '@mui/material/Grid';
 import React, { useEffect } from 'react';
 
-import ButtonStop from '../../ui/buttons/ButtonStop';
-import ButtonOk from '../../ui/buttons/ButtonOk';
-import ExerciseHeader from '../../ui/description/ExerciseHeader';
+import NumberForAdditionColumn from '@/components/ui/excerises/NumberForAdditionColumn';
+import InputDigitForAddingColumn from '@/components/ui/inputs/InputDigitForAddingColumn';
+import Grid from '@mui/material/Grid2';
 
-import { generateExample__AddMultSub } from '../../../utils/generateExample';
+import ButtonStop from '@/components/ui/buttons/ButtonStop';
+import ButtonOk from '@/components/ui/buttons/ButtonOk';
+import ExerciseHeader from '@/components/ui/description/ExerciseHeader';
+
+import { GenerateExampleAddMultSub } from '@/utils/generateExample';
 
 function ExerciseColumnAdding({
   displayExample,
@@ -23,10 +24,10 @@ function ExerciseColumnAdding({
   onAnswer,
   numberOf_Task,
   onStopExercise,
-}: {
+}: Readonly<{
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: generateExample__AddMultSub;
+  example: GenerateExampleAddMultSub;
   onChangeUserAnswers: React.ChangeEventHandler<HTMLInputElement>;
   userDigit_1: string;
   userDigit_2: string;
@@ -37,7 +38,7 @@ function ExerciseColumnAdding({
   userDigit_7: string;
   onAnswer: () => void;
   numberOf_Task: number;
-}) {
+}>) {
   useEffect(() => {
     if (displayExample) {
       const userDigit_7 = document.getElementById('userDigit_7');
@@ -45,11 +46,11 @@ function ExerciseColumnAdding({
     }
   }, [displayExample]);
   return (
-    <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-      <Grid item sx={{ flex: 1, padding: '10px' }}>
+    <Grid container sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
-      <Grid item sx={{ flex: 1 }}>
+      <Grid sx={{ flex: 1 }}>
         <ExerciseHeader align='center'>
           Решите пример № {numberOf_Task}
         </ExerciseHeader>
@@ -67,7 +68,6 @@ function ExerciseColumnAdding({
         }}
       >
         <Grid
-          item
           sx={{
             // border: '1px solid blue',
             width: '100%',
@@ -78,7 +78,6 @@ function ExerciseColumnAdding({
           </NumberForAdditionColumn>
         </Grid>
         <Grid
-          item
           sx={{
             borderBottom: '4px solid black',
             width: '100%',
@@ -89,7 +88,6 @@ function ExerciseColumnAdding({
           </NumberForAdditionColumn>
         </Grid>
         <Grid
-          item
           sx={{
             margin: '0.5rem 0',
             // border: '1px solid blue',
@@ -209,7 +207,6 @@ function ExerciseColumnAdding({
         </Grid>
 
         <Grid
-          item
           sx={{
             // border: '1px solid blue',
             width: '100%',
