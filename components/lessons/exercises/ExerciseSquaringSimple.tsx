@@ -6,24 +6,23 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
-import { operators } from '../../../utils/constants';
-import ButtonStop from '../../ui/buttons/ButtonStop';
-import ButtonOk from '../../ui/buttons/ButtonOk';
+import ButtonStop from '@/components/ui/buttons/ButtonStop';
+import ButtonOk from '@/components/ui/buttons/ButtonOk';
 
-import DescrCellMain from '../../ui/description/DescrCellMain';
-import ExerciseHeader from '../../ui/description/ExerciseHeader';
-import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNumber';
-// import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';s
-import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
-// import HintOperator from '../../ui/excerises/HintOperator';
-import NumberPower from '../../ui/excerises/NumberPower';
+import DescrCellMain from '@/components/ui/description/DescrCellMain';
+import ExerciseHeader from '@/components/ui/description/ExerciseHeader';
+import DescrCellRoundHintNumber from '@/components/ui/description/DescrCellRoundHintNumber';
+
+import InputUserAnswerSimple from '@/components/ui/inputs/InputUserAnswerSimple';
+
+import NumberPower from '@/components/ui/excerises/NumberPower';
 
 import {
-  genExample__SquaringEnding_5,
-  genExample__SquaringCloseTo_,
-} from '../../../utils/generateExample';
+  GenExampleSquaringEnding5,
+  GenExampleSquaringCloseTo,
+} from '@/utils/generateExample';
 
 function ExerciseSquaringSimple({
   displayExample,
@@ -35,17 +34,17 @@ function ExerciseSquaringSimple({
   numberOf_Task,
   showHints,
   refNumber,
-}: {
+}: Readonly<{
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: genExample__SquaringEnding_5 | genExample__SquaringCloseTo_;
+  example: GenExampleSquaringEnding5 | GenExampleSquaringCloseTo;
   userAnswer: string;
   onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
   onAnswer: () => void;
   numberOf_Task: number;
   showHints: boolean;
   refNumber: number;
-}) {
+}>) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
@@ -53,8 +52,8 @@ function ExerciseSquaringSimple({
     }
   }, [displayExample]);
   return (
-    <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-      <Grid item sx={{ flex: 1, padding: '10px' }}>
+    <Grid container sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
       <ExerciseHeader align='center'>
@@ -112,7 +111,7 @@ function ExerciseSquaringSimple({
                 </TableCell>
 
                 <TableCell>
-                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
+                  <DescrCellMain align='center'>=</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <InputUserAnswerSimple

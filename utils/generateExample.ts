@@ -119,3 +119,38 @@ export class GenExampleMultWithDifferentRangers {
     this.checkResultRight = numberToDigit(this.resultRight);
   }
 }
+
+export class GenExampleSquaringEnding5 {
+  id: string;
+  number_1: number;
+  resultRight: number;
+  examplesArray: number[] = [];
+  constructor(max: number) {
+    this.id = uuidv4();
+
+    for (let i = 15; i < Number(max); i += 10) {
+      this.examplesArray.push(i);
+    }
+
+    const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
+    this.number_1 = isNaN(this.examplesArray[exampleIndex])
+      ? 15
+      : this.examplesArray[exampleIndex];
+
+    this.resultRight = Math.pow(this.number_1, 2);
+  }
+}
+
+export class GenExampleSquaringCloseTo {
+  id: string;
+  number_1: number;
+  resultRight: number;
+
+  constructor(min: number, max: number) {
+    this.id = uuidv4();
+
+    this.number_1 = getRandomIntInclusive(min, max);
+
+    this.resultRight = Math.pow(this.number_1, 2);
+  }
+}
