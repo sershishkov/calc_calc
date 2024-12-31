@@ -175,3 +175,24 @@ export class GenExampleSquaringEnding1 {
     this.resultRight = Math.pow(this.number_1, 2);
   }
 }
+
+export class GenExampleSquaringEnding9 {
+  id: string;
+  number_1: number;
+  resultRight: number;
+  examplesArray: number[] = [];
+  constructor(max: number) {
+    this.id = uuidv4();
+
+    for (let i = 19; i <= Number(max); i += 10) {
+      this.examplesArray.push(Number(i));
+    }
+
+    const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
+    this.number_1 = isNaN(+this.examplesArray[exampleIndex])
+      ? 19
+      : this.examplesArray[exampleIndex];
+
+    this.resultRight = Math.pow(this.number_1, 2);
+  }
+}
