@@ -15,14 +15,14 @@ import { ExampleSimpleInterface } from '@/interfaces/interfaces';
 import Grid from '@mui/material/Grid2';
 import Description1 from './Description1';
 
-export default function SquaringCloseTo50({
+export default function SquaringCloseTo500({
   exerciseName,
 }: Readonly<{
   exerciseName: string;
 }>) {
-  const refNumber = 50;
-  const [min, setMin] = useState('45');
-  const [max, setMax] = useState('62');
+  const refNumber = 500;
+  const [min, setMin] = useState('490');
+  const [max, setMax] = useState('510');
   const [examplesNumber, setExamplesNumber] = useState('10');
   const [example, setExample] = useState<GenExampleSquaringCloseTo>();
   const [userAnswer, setUserAnswer] = useState('');
@@ -104,8 +104,8 @@ export default function SquaringCloseTo50({
       }}
     >
       <Header
-        hrefPrev='/lessons/level_5/squaring_ending_5'
-        hrefNext='/lessons/level_5/squaring_close_to_500'
+        hrefPrev='/lessons/level_5/squaring_close_to_50'
+        hrefNext='/lessons/level_5/squaring_ending_1'
         time={time}
         title={exerciseName}
       />
