@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
+import '@/app/globals.css';
 
 import AuthProvider from '@/components/AuthProvider/AuthProvider';
 import ToastProvider from '@/components/ToastProvider/toast.provider';
