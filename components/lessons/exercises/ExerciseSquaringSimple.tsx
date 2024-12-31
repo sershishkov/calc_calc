@@ -23,6 +23,7 @@ import {
   GenExampleSquaringEnding5,
   GenExampleSquaringCloseTo,
 } from '@/utils/generateExample';
+import DescrCellRoundRefNumber from '@/components/ui/description/DescrCellRoundRefNumber';
 
 function ExerciseSquaringSimple({
   displayExample,
@@ -95,13 +96,13 @@ function ExerciseSquaringSimple({
 
               <TableRow>
                 <TableCell>
-                  {/* <DescrCellRoundRefNumber text={refNumber} /> */}
+                  {refNumber > 0 && (
+                    <DescrCellRoundRefNumber text={`${refNumber}`} />
+                  )}
                 </TableCell>
                 <TableCell
                   sx={{
                     position: 'relative',
-                    // padding: 0,
-                    // border: '1px solid red',
                   }}
                 >
                   <DescrCellMain align='center'>

@@ -10,7 +10,7 @@ function NumberPower({ children }: Readonly<{ children: React.ReactNode }>) {
     <Typography
       sx={{
         position: 'absolute',
-        top: '0.5rem',
+        top: matches ? '0.1rem' : '0.5rem',
         right: '0',
         fontSize: matches ? '2rem' : '1.2rem',
 
