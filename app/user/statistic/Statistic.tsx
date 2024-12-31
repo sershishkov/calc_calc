@@ -8,12 +8,21 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Statistic({ my_data }: Readonly<{ my_data: any }>) {
   const totalTasksOk = my_data.totalTasksOk;
   const totalTasksError = my_data.totalTasksError;
   const totalExerciseTime = my_data.totalExerciseTime;
   const totalTasksCount = my_data.totalTasksCount;
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const StatisticDesktop = () => (
     <TableContainer component={Paper} sx={{ maxHeight: 750 }}>
@@ -64,6 +73,63 @@ export default function Statistic({ my_data }: Readonly<{ my_data: any }>) {
       </Table>
     </TableContainer>
   );
+  const StatisticMobile = () => (
+    <List>
+      {my_data.items &&
+        my_data.items.length > 0 &&
+        my_data.items.map((row: StatisticExerciseInterface) => (
+          <ListItem key={row.exerciseName}>
+            <List>
+              <ListItem>
+                <ListItemText>{row.exerciseName}</ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Правильные: {row.tasksOk}</ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>Ошибка: {row.tasksError}</ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>
+                  Время на упражнение: {row.exerciseTime}
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>
+                  Мин время на задачу: {row.minTaskTime.toFixed(2)}
+                </ListItemText>
+              </ListItem>
+              <ListItem>
+                <ListItemText>
+                  Всего задач в упражнении: {row.tasksCount}
+                </ListItemText>
+              </ListItem>
+            </List>
+          </ListItem>
+        ))}
+      <ListItem>
+        <List>
+          <ListItem>
+            <ListItemText>Итого</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Правильные: {totalTasksOk}</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Ошибка: {totalTasksError}</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Время Всего: {totalExerciseTime}</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Всего задач в упражнении: {totalTasksCount}
+            </ListItemText>
+          </ListItem>
+        </List>
+      </ListItem>
+    </List>
+  );
 
-  return <StatisticDesktop />;
+  return matches ? <StatisticDesktop /> : <StatisticMobile />;
 }
