@@ -1,5 +1,5 @@
 'use client';
-import { Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { StatisticExerciseInterface } from '@/interfaces/refdata';
 
 import TableContainer from '@mui/material/TableContainer';
@@ -17,13 +17,26 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Statistic({ my_data }: Readonly<{ my_data: any }>) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const [isSSR, setIsSSR] = useState(true);
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
+  if (
+    isSSR ||
+    !my_data.items ||
+    my_data.items === undefined ||
+    my_data.items.length === 0
+  ) {
+    return <div>Нет данных</div>;
+  }
   const totalTasksOk = my_data.totalTasksOk;
   const totalTasksError = my_data.totalTasksError;
   const totalExerciseTime = my_data.totalExerciseTime;
   const totalTasksCount = my_data.totalTasksCount;
-
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const StatisticDesktop = () => (
     <TableContainer component={Paper} sx={{ maxHeight: 750 }}>
@@ -132,9 +145,5 @@ export default function Statistic({ my_data }: Readonly<{ my_data: any }>) {
     </List>
   );
 
-  return (
-    <Suspense fallback={<div>Loading Statistics</div>}>
-      {matches ? <StatisticDesktop /> : <StatisticMobile />}
-    </Suspense>
-  );
+  return matches ? <StatisticDesktop /> : <StatisticMobile />;
 }
