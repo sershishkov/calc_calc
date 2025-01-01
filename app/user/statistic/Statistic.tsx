@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import { StatisticExerciseInterface } from '@/interfaces/refdata';
 
 import TableContainer from '@mui/material/TableContainer';
@@ -131,5 +132,9 @@ export default function Statistic({ my_data }: Readonly<{ my_data: any }>) {
     </List>
   );
 
-  return matches ? <StatisticDesktop /> : <StatisticMobile />;
+  return (
+    <Suspense fallback={<div>Loading Statistics</div>}>
+      {matches ? <StatisticDesktop /> : <StatisticMobile />}
+    </Suspense>
+  );
 }
