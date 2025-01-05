@@ -17,7 +17,7 @@ export const addOrUpdateStatistic = async (dataObject: any) => {
     const res = await fetch(`http://localhost:3000/api/user/statistic`, {
       method: 'POST',
       headers: {
-        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         Cookie: cookie ?? '',
       },
       body: JSON.stringify(dataObject),
@@ -42,7 +42,7 @@ export const getMyStatistic = async () => {
     const res = await fetch(`http://localhost:3000/api/user/statistic`, {
       method: 'GET',
       headers: {
-        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         Cookie: cookie ?? '',
       },
     });
