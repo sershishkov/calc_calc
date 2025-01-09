@@ -93,3 +93,11 @@ export interface ExampleSimplDivWithRestInterface {
 
   doneExcercise: boolean;
 }
+
+export interface ExampleStarOrDotLevel_7Interface {
+  digit: number | string;
+  isStar: boolean;
+  isDot: boolean;
+  color?: string;
+  dots?: string;
+}
