@@ -258,3 +258,23 @@ export class GenerateExampleMultBy {
     this.resultMult = +this.numberLeft * +this.numberRight;
   }
 }
+
+export class GenerateExampleMultDifferentRangesForOperands {
+  id: string;
+  numberLeft: number;
+  numberRight: number;
+  resultMult: number;
+  constructor(
+    minLeft: number,
+    maxLeft: number,
+    minRight: number,
+    maxRight: number
+  ) {
+    this.id = uuidv4();
+
+    this.numberLeft = getRandomIntInclusive(+minLeft, +maxLeft);
+    this.numberRight = getRandomIntInclusive(+minRight, +maxRight);
+
+    this.resultMult = +this.numberLeft * +this.numberRight;
+  }
+}
