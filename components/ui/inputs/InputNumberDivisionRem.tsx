@@ -1,5 +1,4 @@
 import TextField from '@mui/material/TextField';
-// import Grid from '@mui/material/Grid';
 
 function InputNumberDivisionRem({
   name,
@@ -9,7 +8,7 @@ function InputNumberDivisionRem({
   onKeyPress,
   tabIndex,
   display,
-}: {
+}: Readonly<{
   id: string;
   name: string;
   value: string;
@@ -17,7 +16,7 @@ function InputNumberDivisionRem({
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   tabIndex: number;
   display: boolean;
-}) {
+}>) {
   return (
     <TextField
       type='number'
@@ -25,11 +24,12 @@ function InputNumberDivisionRem({
       id={id}
       value={value}
       onChange={onChange}
-      onKeyPress={onKeyPress}
-      inputProps={{
-        // maxLength: 1,
-        tabIndex: tabIndex,
-      }}
+      onKeyUp={onKeyPress}
+      // inputProps={{
+      //   // maxLength: 1,
+      //   tabIndex: tabIndex,
+      // }}
+      tabIndex={tabIndex}
       onInput={(e) => {
         (e.target as HTMLInputElement).value = Math.max(
           0,

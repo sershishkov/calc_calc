@@ -196,3 +196,50 @@ export class GenExampleSquaringEnding9 {
     this.resultRight = Math.pow(this.number_1, 2);
   }
 }
+
+export class GenExampleDivBySimpleNumber {
+  id: string;
+
+  divident: number;
+  divider_Total: number;
+  resultRight: number;
+  reminderOfDivision: number;
+  constructor(max: number) {
+    this.id = uuidv4();
+
+    this.divident = getRandomIntInclusive(1000000, +max);
+    this.divider_Total = getRandomIntInclusive(2, 9);
+    this.resultRight = Math.floor(this.divident / this.divider_Total);
+    this.reminderOfDivision = this.divident % this.divider_Total;
+  }
+}
+
+export class GenExampleDivByMultipliers {
+  id: string;
+
+  divident: number;
+  divider_1: number;
+  divider_2: number;
+  divider_Total: number;
+  resultRight: number;
+  reminderOfDivision: number;
+
+  constructor(max: number) {
+    this.id = uuidv4();
+    const tempDivider_1 = getRandomIntInclusive(2, 9);
+    const tempDivider_2 = getRandomIntInclusive(2, 9);
+    if (tempDivider_1 >= tempDivider_2) {
+      this.divider_1 = tempDivider_2;
+      this.divider_2 = tempDivider_1;
+    } else {
+      this.divider_1 = tempDivider_1;
+      this.divider_2 = tempDivider_2;
+    }
+
+    this.divider_Total = +this.divider_1 * +this.divider_2;
+    this.divident = getRandomIntInclusive(1000000, +max);
+
+    this.resultRight = Math.floor(this.divident / this.divider_Total);
+    this.reminderOfDivision = this.divident % this.divider_Total;
+  }
+}

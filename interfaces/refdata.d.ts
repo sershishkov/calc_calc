@@ -82,3 +82,14 @@ export interface ExampleSimpleAndCheckAnswerObjInterface {
   doneCheck: boolean;
   doneExcercise: boolean;
 }
+
+export interface ExampleSimplDivWithRestInterface {
+  example: string;
+  userResult: string;
+  userAnswerRem: string;
+
+  resultRight: number;
+  reminderOfDivision: number;
+
+  doneExcercise: boolean;
+}

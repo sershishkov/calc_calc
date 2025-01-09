@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 
-function DividerSimple({ children }: { children: React.ReactNode }) {
+function DividerSimple({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <Typography
       sx={{

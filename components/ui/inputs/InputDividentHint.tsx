@@ -1,5 +1,4 @@
 import TextField from '@mui/material/TextField';
-// import Grid from '@mui/material/Grid';
 
 function InputDividentHint({
   name,
@@ -11,7 +10,7 @@ function InputDividentHint({
   display,
   top = '0.4rem',
   left = '-0.8rem',
-}: {
+}: Readonly<{
   id: string;
   name: string;
   value: string;
@@ -21,7 +20,7 @@ function InputDividentHint({
   display: boolean;
   top: string;
   left?: string;
-}) {
+}>) {
   return (
     <TextField
       type='number'
@@ -29,11 +28,12 @@ function InputDividentHint({
       id={id}
       value={value}
       onChange={onChange}
-      onKeyPress={onKeyPress}
-      inputProps={{
-        // maxLength: 1,
-        tabIndex: tabIndex,
-      }}
+      onKeyUp={onKeyPress}
+      // inputProps={{
+      //   // maxLength: 1,
+      //   tabIndex: tabIndex,
+      // }}
+      tabIndex={tabIndex}
       onInput={(e) => {
         (e.target as HTMLInputElement).value = Math.max(
           0,
@@ -57,7 +57,7 @@ function InputDividentHint({
           height: '1rem',
           textAlign: 'center',
           fontSize: '0.8rem',
-          border: '1px solid blue',
+          border: '1px solid yellow',
           borderRadius: '50%',
           // color: 'blue',
 

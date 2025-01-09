@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 
-function DividentDigit({ children }: { children: React.ReactNode }) {
+function DividentDigit({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <Typography
       sx={{

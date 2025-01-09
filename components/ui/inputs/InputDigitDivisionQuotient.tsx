@@ -1,5 +1,4 @@
 import TextField from '@mui/material/TextField';
-// import Grid from '@mui/material/Grid';
 
 function InputDigitDivisionQuotient({
   name,
@@ -8,14 +7,14 @@ function InputDigitDivisionQuotient({
   onChange,
   onKeyPress,
   tabIndex,
-}: {
+}: Readonly<{
   id: string;
   name: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   tabIndex: number;
-}) {
+}>) {
   return (
     <TextField
       type='number'
@@ -23,11 +22,12 @@ function InputDigitDivisionQuotient({
       id={id}
       value={value}
       onChange={onChange}
-      onKeyPress={onKeyPress}
-      inputProps={{
-        // maxLength: 1,
-        tabIndex: tabIndex,
-      }}
+      onKeyUp={onKeyPress}
+      // inputProps={{
+      //   // maxLength: 1,
+      //   tabIndex: tabIndex,
+      // }}
+      tabIndex={tabIndex}
       onInput={(e) => {
         (e.target as HTMLInputElement).value = Math.max(
           0,
