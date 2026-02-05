@@ -82,7 +82,7 @@ export class GenerateExampleForCheckMultiplication {
     this.checkNumberLeft = numberToDigit(this.numberLeft);
     this.checkNumberRight = numberToDigit(this.numberRight);
     this.checkResultLeft = numberToDigit(
-      this.checkNumberLeft * this.checkNumberRight
+      this.checkNumberLeft * this.checkNumberRight,
     );
     this.checkResultRight = numberToDigit(this.resultRight);
   }
@@ -104,7 +104,7 @@ export class GenExampleMultWithDifferentRangers {
     minLeft: number,
     maxLeft: number,
     minRight: number,
-    maxRight: number
+    maxRight: number,
   ) {
     this.id = uuidv4();
     this.numberLeft = getRandomIntInclusive(minLeft, maxLeft);
@@ -114,7 +114,7 @@ export class GenExampleMultWithDifferentRangers {
     this.checkNumberLeft = numberToDigit(this.numberLeft);
     this.checkNumberRight = numberToDigit(this.numberRight);
     this.checkResultLeft = numberToDigit(
-      this.checkNumberLeft * this.checkNumberRight
+      this.checkNumberLeft * this.checkNumberRight,
     );
     this.checkResultRight = numberToDigit(this.resultRight);
   }
@@ -133,7 +133,7 @@ export class GenExampleSquaringEnding5 {
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = isNaN(this.examplesArray[exampleIndex])
+    this.number_1 = Number.isNaN(this.examplesArray[exampleIndex])
       ? 15
       : this.examplesArray[exampleIndex];
 
@@ -168,7 +168,7 @@ export class GenExampleSquaringEnding1 {
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = isNaN(+this.examplesArray[exampleIndex])
+    this.number_1 = Number.isNaN(+this.examplesArray[exampleIndex])
       ? 11
       : this.examplesArray[exampleIndex];
 
@@ -189,7 +189,7 @@ export class GenExampleSquaringEnding9 {
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = isNaN(+this.examplesArray[exampleIndex])
+    this.number_1 = Number.isNaN(+this.examplesArray[exampleIndex])
       ? 19
       : this.examplesArray[exampleIndex];
 
@@ -268,7 +268,7 @@ export class GenerateExampleMultDifferentRangesForOperands {
     minLeft: number,
     maxLeft: number,
     minRight: number,
-    maxRight: number
+    maxRight: number,
   ) {
     this.id = uuidv4();
 
